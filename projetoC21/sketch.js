@@ -19,7 +19,7 @@ function setup() {
 	
 	ground = new Ground(400,690,800,20);
 	leftside = new Ground(550,640,10,60);
-	leftside = new Ground(750,640,10,60)
+	rightside = new Ground(750,640,10,60);
 	//Create the Bodies Here.
 	var ball_opt = {
 		restitution: 0.3,
@@ -37,14 +37,18 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  
- // drawSprites();
+  keyPressed();
+ keyPressed();
+ ellipse(ball.position.x,ball.position.y,20);
  ground.show();
  rightside.show();
  leftside.show();
- ellipse(ball.position.x,ball.position.y,20);
  Engine.update(engine);
 }
-
+function keyPressed(){
+	if(keyCode === UP_ARROW){
+		Matter.Body.applyForce(ball,ball.position,{x:85, y:-85});
+	}
+}
 
 
